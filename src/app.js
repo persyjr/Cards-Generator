@@ -52,7 +52,7 @@ function generarCarta() {
   //figura inferior
   figura2.innerHTML = figura1.textContent;
   figura2.className = "lowfigure";
-  figura2.style.cssFloat = "right"; //function to align figure
+  figura2.style.cssFloat = "rigth"; //function to align figure
   contenedor.appendChild(figura2);
   // Retorna el elemento
 
