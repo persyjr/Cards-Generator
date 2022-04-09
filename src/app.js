@@ -1,47 +1,70 @@
-/* eslint-disable */
-import "bootstrap";
 import "./style.css";
-
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+var main = document.querySelector("#main");
+var contorno = document.querySelector("#contorno");
 
 window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
-  let excusa = document.querySelector("#excuse");
-  excusa.innerHTML = `<strong>${excuse}</strong>`;
+  let titulo = document.createElement("h1");
+  titulo.innerText = "Generador de cartas";
+  main.appendChild(titulo);
+  let carta = generarCarta();
+  main.appendChild(carta);
+};
 
-  function generarExcusa() {
-    return `${arregloRandom(who)} ${arregloRandom(action)} ${arregloRandom(
-      what
-    )} ${arregloRandom(when)}`;
+function generarCarta() {
+  // Generar numero
+  let num = Math.floor(Math.random() * 13 + 1);
+  switch (num) {
+    case 1:
+      num = "A";
+      break;
+    case 11:
+      num = "J";
+      break;
+    case 12:
+      num = "Q";
+      break;
+    case 13:
+      num = "K";
+      break;
   }
 
-  document.getElementById("boton1").addEventListener("click", function() {
-    excusa.innerHTML = `<h2>${generarExcusa()}</h2>`;
-  });
-};
-let action = ["ate", "peed", "crushed", "broke"];
-let who = ["the dog", "my granma", "his turtle", "my bird"];
-let what = ["eat", "pissed", "crushed", "broked"];
-let when = [
-  "before the class",
-  "right in time",
-  "when I finished",
-  "during my lunch",
-  "while I was praying"
-];
+  // Generar figura ["heart", "club", "spade", "diamond"]
+  let carta = ["♥", "♣", "♦", "♠"];
+  let cartaEscogida = Math.floor(Math.random() * carta.length);
+  let contenedor = document.createElement("div");
+  let figura1 = document.createElement("div");
+  let figura2 = document.createElement("div");
+  contenedor.className = "card";
 
-function arregloRandom(arreglo) {
-  let max = arreglo.length;
-  let random = Math.random() * max;
-  random = Math.floor(random);
-  return arreglo[random];
+  // Codigo que genera la carta
+  //figura superior
+  figura1.className = "upfigure";
+  figura1.style.cssFloat = "Left"; //function to align figure
+  figura1.innerHTML = carta[cartaEscogida];
+  contenedor.appendChild(figura1);
+
+  //contenedor del numero
+  let contenedornum = document.createElement("div");
+  contenedornum.innerHTML = num;
+  contenedornum.className = "numero";
+  contenedor.appendChild(contenedornum);
+
+  //figura inferior
+  figura2.innerHTML = figura1.textContent;
+  figura2.className = "lowfigure";
+  figura2.style.cssFloat = "right"; //function to align figure
+  contenedor.appendChild(figura2);
+  // Retorna el elemento
+
+  return contenedor;
 }
 
-let excuse = `${arregloRandom(who)} ${arregloRandom(action)} ${arregloRandom(
-  what
-)} ${arregloRandom(when)}`;
+/*
 
-console.log(excuse);
-console.log(`la excusa es :${excuse} `);
+function floatRight() {
+    document.querySelector(".lowfigure").style.cssFloat = "right";
+  }
+  function floatLeft() {
+    document.querySelector(".upfigure").style.cssFloat = "Left";
+  }
+*/
