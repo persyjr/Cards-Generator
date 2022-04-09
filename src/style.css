@@ -1,6 +1,8 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 body {
   background: gray;
+  display: flex;
+  justify-content: center;
 }
 .card {
   display: flex;
@@ -19,13 +21,20 @@ body {
   width: 150px;
   display: flex;
   justify-content: flex-start;
+  color: red;
+  font-size: 50px;
 }
+
 .lowfigure {
   width: 150px;
   display: flex;
   justify-content: flex-end;
+  color: red;
+  font-size: 50px;
 }
 .numero {
   display: flex;
-  align-content: center;
+  width: 150px;
+  justify-content: center;
+  font-size: 50px;
 }
